@@ -191,6 +191,7 @@ function update(){
     update_total_citations();
     update_h_index();
     update_i10_index();
+    update_coauthors();
     hist.update();
 
     player.update_cycles++;
@@ -203,14 +204,54 @@ function update(){
     setTimeout(update, player.tickspeed);
 }
 
+function update_coauthors(){
+    for (let coauthor of player.coauthors){
+        if (coauthor.assigned_paper == null) {
+            let papers = player.papers.filter(p => p.progress <= 0.9);
+            if (papers.length == 0) coauthor.assigned_paper = null;
+            coauthor.assigned_paper = papers[Math.floor(Math.random()*papers.length)];
+        }
+
+        coauthor.assigned_paper.progress += coauthor.speed;
+        if (coauthor.assigned_paper.progress >= 0.9) {
+            coauthor.assigned_paper.div.progress_btn.innerHTML = "Done";
+            coauthor.assigned_paper.div.progress_btn.disabled = true;
+            coauthor.assigned_paper = null;
+        }
+        else coauthor.assigned_paper.div.progress_btn.innerHTML = Math.round(coauthor.assigned_paper.progress*100) + "%";
+    }
+}
+
 function add_coauthor(){
     let coauthor = {
         name: "Coauthor " + player.coauthors.length,
-        speed: 1,
+        speed: 0.01,
         assigned_paper: null,
     }
 
     player.coauthors.push(coauthor);
+
+    let crow = d3.select("#coauthorlist").append("li")
+        .attr("class", "gsc_rsb_aa")
+        .style("display", "flex")
+
+    // image
+    let i = crow.append("span")
+    i.append("img")
+        .attr("src", Math.random() < 0.5? "img/f_reading.svg" : "img/m_reading.svg")
+        .attr("width", "32")
+        .attr("height", "32")
+
+    // name
+    let s = crow.append("span")
+        .attr("class", "gsc_rsb_a_desc")
+        
+    s.append("a")
+        .text(coauthor.name)
+
+    s.append("span")
+        .attr("class", "gsc_rsb_a_ext")
+        .text("Northeastern University")
 }
 
 function init(){
