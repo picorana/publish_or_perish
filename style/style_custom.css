@@ -32,4 +32,47 @@
     padding-left: 16px;
     padding-right: 16px;
     background-color: #f2f2f2;
+    margin-bottom: -1px;
+}
+
+body {
+    display: grid;
+}
+
+#money_div {
+    background-color: #f2f2f2;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#money_val {
+    font-size: 20px;
+    margin: 0;
+}
+
+#money_formula {
+    font-size: 12px;
+    font-style: italic;
+    margin: 0;
+}
+
+#info{
+    position:absolute;
+    right: 10%;
+    top: 10%;
+    width: 80%;
+    background-color: #fff;
+    border:#000 1px solid;
+    padding: 30px;
+    font-size: medium;
+    z-index: 10;
+}
+
+button {
+    z-index: 0;
+}
+
+a {
+    cursor: pointer;
 }

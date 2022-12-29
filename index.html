@@ -9,16 +9,19 @@
         <!-- <div data-h="0" class="gs_md_wnw gs_md_ds"><div id="gsc_md_hist" class="gs_md_d gs_md_ds gs_ttzi" role="dialog" tabindex="-1" aria-labelledby="gsc_md_hist-t" data-wfc="gsc_md_hist-x"><div class="gs_md_hdr"><a href="javascript:void(0)" id="gsc_md_hist-x" role="button" aria-label="Cancel" data-mdx="gsc_md_hist" class="gs_btnCLS gs_md_x gs_md_hdr_c gs_in_ib gs_btn_lrge"><span class="gs_ico"></span><span class="gs_ia_notf"></span><span class="gs_lbl"></span></a><h2 id="gsc_md_hist-t" class="gs_md_hdr_t">Citations per year</h2><div class="gs_md_hdr_b"></div></div><div id="gsc_md_hist-bdy" class="gs_md_bdy"><style>#gsc_md_hist{width:80%;max-width:386px;}#gsc_md_hist_c{position:relative;width:100%;}</style><div id="gsc_md_hist_c"></div></div></div></div> -->
         <!-- <div data-h="600" class="gs_md_wnw gs_md_ds gs_md_wmw"><div id="gsc_md_cbyd" class="gs_md_d gs_md_ds gs_ttzi" role="dialog" tabindex="-1" aria-labelledby="gsc_md_cbyd-t" data-cid="gsc_md_cbyd_l" data-wfc="gsc_md_cbyd-x"><div class="gs_md_hdr"><a href="javascript:void(0)" id="gsc_md_cbyd-x" role="button" aria-label="Cancel" data-mdx="gsc_md_cbyd" class="gs_btnCLS gs_md_x gs_md_hdr_c gs_in_ib gs_btn_lrge"><span class="gs_ico"></span><span class="gs_ia_notf"></span><span class="gs_lbl"></span></a><h2 id="gsc_md_cbyd-t" class="gs_md_hdr_t">Duplicate citations</h2><div class="gs_md_hdr_b"></div></div><div id="gsc_md_cbyd-bdy" class="gs_md_bdy"><form id="gsc_md_cbyd_f" action="/citations?hl=en&amp;user=VAi0mIQAAAAJ&amp;view_op=list_works" method="post"><input type="hidden" name="s" value=""><div class="gs_md_lbl">The following articles are merged in Scholar. Their <a id="gsc_md_cbyd_c" href="javascript:void(0)">combined citations</a> are counted only for the first article.</div><div id="gsc_md_cbyd_l"></div><p class="gs_med">We recommend merging these articles in your profile.</p><div class="gs_md_btns"><button type="submit" id="gsc_md_cbyd_merge" name="do_merge_btn" class=" gs_btn_act gs_btn_lrge gs_btn_lsu"><span class="gs_wr"><span class="gs_lbl">Merge</span></span></button></div></form></div></div></div> -->
 
-
         <!-- HEADER -->
         <div id="gs_hdr">
             <div id="gs_hdr_ttl">Publish or Perish</div>
-            <a class="gs_hdr_tab">About</a>
+            <a class="gs_hdr_tab" onclick="show_info()">About + How to Play</a>
+        </div>
+
+        <div id="money_div">
+            <div id="money_val">Money: 0</div>
+            <div id="money_formula">Money = citations * 0.1</div>
         </div>
 
         <!-- BUTTONS -->
         <div id="gsc_prf_nbar_btns">
-            
         </div>
 
         <!-- BODY -->
@@ -104,7 +107,7 @@
                 <div id="gsc_art" class="gsc_lcl gsc_prf_pnl" role="tabpanel" aria-labelledby="gsc_prf_t-art">
                     <div id="gsc_a_tw">
                         <table id="gsc_a_t">
-                            <thead id="gs_sth"><tr id="gsc_a_tr0" aria-hidden="true" class="gs_sth_g"><th class="gsc_a_x"></th><th class="gsc_a_t"></th><th class="gsc_a_c"></th><th class="gsc_a_y"></th></tr><tr id="gsc_a_trh" class="gs_sth_b"><th class="gsc_a_x" scope="col"><span id="gsc_a_xall"><a href="javascript:void(0)" id="gsc_x_all" role="checkbox" aria-checked="false" aria-label="Select all" data-s="0" class="gs_cb_gen gs_in_cb gs_in_cbj"><span class="gs_lbl"></span><span class="gs_chk"></span><span class="gs_cbx"></span></a></span></th><th class="gsc_a_t" scope="col"><span id="gsc_a_ta"><a href="/citations?hl=en&amp;user=VAi0mIQAAAAJ&amp;view_op=list_works&amp;sortby=title" class="gsc_a_a">Title</a></span><div id="gsc_dd_add-r" class="gs_md_r gs_md_rmb gs_md_rmbl"><button type="button" id="gsc_dd_add-b" aria-controls="gsc_dd_add-d" aria-haspopup="true" ontouchstart="gs_evt_dsp(event)" class="gs_btnUCT gs_in_ib gs_btn_flat gs_btn_lrge gs_btn_half gs_btn_lsu gs_press gs_md_tb"><span class="gs_wr"><span class="gs_ico"></span><span class="gs_lbl"></span></span></button><div id="gsc_dd_add-d" class="gs_md_d gs_md_ds gs_md_ulr" role="menu" tabindex="-1"><div class="gsc_dd_sec"><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="/citations?view_op=import_lookup&amp;hl=en&amp;imq=Sara+Di+Bartolomeo&amp;json=">Add article groups</a><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="/citations?view_op=import_lookup&amp;hl=en&amp;imq=Sara+Di+Bartolomeo&amp;json=&amp;btnA=1">Add articles</a><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="/citations?view_op=add_citation&amp;hl=en&amp;user=VAi0mIQAAAAJ">Add article manually</a></div><div class="gsc_dd_sec gsc_dd_sep"><a class="gs_md_li" role="menuitem" tabindex="-1" href="/citations?view_op=list_updates&amp;hl=en&amp;user=VAi0mIQAAAAJ">Configure article updates</a></div></div></div><button type="button" id="gsc_btn_mer" class="gs_btnMRG gs_in_ib gs_btn_flat gs_btn_lrge gs_btn_lsu gs_btn_mph" disabled=""><span class="gs_wr"><span class="gs_ico"></span><span class="gs_lbl">Merge</span></span></button><button type="submit" id="gsc_btn_del" name="trash_btn" class="gs_btnDE gs_in_ib gs_btn_flat gs_btn_lrge gs_btn_lsu gs_btn_mph"><span class="gs_wr"><span class="gs_ico"></span><span class="gs_lbl">Delete</span></span></button><div id="gsc_dd_exp-r" class="gs_md_r gs_md_rmb gs_md_rmbl"><button type="button" id="gsc_dd_exp-b" aria-controls="gsc_dd_exp-d" aria-haspopup="true" ontouchstart="gs_evt_dsp(event)" class="gs_btnDWL gs_in_ib gs_btn_flat gs_btn_lrge gs_btn_lsu gs_btn_mph gs_press gs_md_tb"><span class="gs_wr"><span class="gs_ico"></span><span class="gs_lbl">Export</span></span></button><div id="gsc_dd_exp-d" class="gs_md_d gs_md_ds gs_md_ulr" role="menu" tabindex="-1"><div class="gs_md_ul gs_md_ul_tb gs_md_ulr"><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="0">BibTeX</a><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="2">EndNote</a><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="3">RefMan</a><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="4">CSV</a></div></div></div><div id="gsc_dd_mor-r" class="gs_md_r gs_md_rmb gs_md_rmbl"><button type="button" id="gsc_dd_mor-b" aria-controls="gsc_dd_mor-d" aria-haspopup="true" ontouchstart="gs_evt_dsp(event)" class="gs_btnMOR gs_in_ib gs_btn_flat gs_btn_lrge gs_btn_half gs_btn_lsu gs_press gs_md_tb"><span class="gs_wr"><span class="gs_ico"></span><span class="gs_lbl"></span></span></button><div id="gsc_dd_mor-d" class="gs_md_d gs_md_ds gs_md_ulr" role="menu" tabindex="-1"><div class="gsc_dd_sec"><a role="menuitem" href="/citations?view_op=list_trash&amp;hl=en" tabindex="-1" class="gs_md_li">View trash</a></div><div id="gsc_dd_mor-s" class="gs_oph gsc_dd_sec gsc_dd_sep"><a role="menuitem" href="/citations?hl=en&amp;user=VAi0mIQAAAAJ&amp;view_op=list_works" tabindex="-1" class="gs_md_li gsc_dd_mor-sel">Sort by citations</a><a role="menuitem" href="/citations?hl=en&amp;user=VAi0mIQAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" tabindex="-1" class="gs_md_li">Sort by year</a><a role="menuitem" href="/citations?hl=en&amp;user=VAi0mIQAAAAJ&amp;view_op=list_works&amp;sortby=title" tabindex="-1" class="gs_md_li">Sort by title</a></div><div id="gsc_dd_mor-p" class="gsc_dd_sep">Select articles to see merge, delete, and export buttons</div></div></div></th><th class="gsc_a_c" scope="col" dir="rtl"><span id="gsc_a_ca"><div class="gs_nph">Cited by</div><div class="gs_oph">Cited by</div></span></th><th class="gsc_a_y" scope="col"><span class="gsc_a_h" id="gsc_a_ha"><a href="/citations?hl=en&amp;user=VAi0mIQAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" class="gsc_a_a">Year</a></span></th></tr></thead>
+                            <thead id="gs_sth"><tr id="gsc_a_tr0" aria-hidden="true" class="gs_sth_g"><th class="gsc_a_x"></th><th class="gsc_a_t"></th><th class="gsc_a_c"></th><th class="gsc_a_y"></th></tr><tr id="gsc_a_trh" class="gs_sth_b"><th class="gsc_a_x" scope="col"><span id="gsc_a_xall"><a href="javascript:void(0)" id="gsc_x_all" role="checkbox" aria-checked="false" aria-label="Select all" data-s="0" class="gs_cb_gen gs_in_cb gs_in_cbj"><span class="gs_lbl"></span><span class="gs_chk"></span><span class="gs_cbx"></span></a></span></th><th class="gsc_a_t" scope="col"><span id="gsc_a_ta"><a class="gsc_a_a">Title</a></span><div id="gsc_dd_add-r" class="gs_md_r gs_md_rmb gs_md_rmbl"><button type="button" id="gsc_dd_add-b" aria-controls="gsc_dd_add-d" aria-haspopup="true" ontouchstart="gs_evt_dsp(event)" class="gs_btnUCT gs_in_ib gs_btn_flat gs_btn_lrge gs_btn_half gs_btn_lsu gs_press gs_md_tb"><span class="gs_wr"><span class="gs_ico"></span><span class="gs_lbl"></span></span></button><div id="gsc_dd_add-d" class="gs_md_d gs_md_ds gs_md_ulr" role="menu" tabindex="-1"><div class="gsc_dd_sec"><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="/citations?view_op=import_lookup&amp;hl=en&amp;imq=Sara+Di+Bartolomeo&amp;json=">Add article groups</a><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="/citations?view_op=import_lookup&amp;hl=en&amp;imq=Sara+Di+Bartolomeo&amp;json=&amp;btnA=1">Add articles</a><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="/citations?view_op=add_citation&amp;hl=en&amp;user=VAi0mIQAAAAJ">Add article manually</a></div><div class="gsc_dd_sec gsc_dd_sep"><a class="gs_md_li" role="menuitem" tabindex="-1" href="/citations?view_op=list_updates&amp;hl=en&amp;user=VAi0mIQAAAAJ">Configure article updates</a></div></div></div><button type="button" id="gsc_btn_mer" class="gs_btnMRG gs_in_ib gs_btn_flat gs_btn_lrge gs_btn_lsu gs_btn_mph" disabled=""><span class="gs_wr"><span class="gs_ico"></span><span class="gs_lbl">Merge</span></span></button><button type="submit" id="gsc_btn_del" name="trash_btn" class="gs_btnDE gs_in_ib gs_btn_flat gs_btn_lrge gs_btn_lsu gs_btn_mph"><span class="gs_wr"><span class="gs_ico"></span><span class="gs_lbl">Delete</span></span></button><div id="gsc_dd_exp-r" class="gs_md_r gs_md_rmb gs_md_rmbl"><button type="button" id="gsc_dd_exp-b" aria-controls="gsc_dd_exp-d" aria-haspopup="true" ontouchstart="gs_evt_dsp(event)" class="gs_btnDWL gs_in_ib gs_btn_flat gs_btn_lrge gs_btn_lsu gs_btn_mph gs_press gs_md_tb"><span class="gs_wr"><span class="gs_ico"></span><span class="gs_lbl">Export</span></span></button><div id="gsc_dd_exp-d" class="gs_md_d gs_md_ds gs_md_ulr" role="menu" tabindex="-1"><div class="gs_md_ul gs_md_ul_tb gs_md_ulr"><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="0">BibTeX</a><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="2">EndNote</a><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="3">RefMan</a><a class="gs_md_li" role="menuitem" tabindex="-1" href="javascript:void(0)" data-a="4">CSV</a></div></div></div><div id="gsc_dd_mor-r" class="gs_md_r gs_md_rmb gs_md_rmbl"><button type="button" id="gsc_dd_mor-b" aria-controls="gsc_dd_mor-d" aria-haspopup="true" ontouchstart="gs_evt_dsp(event)" class="gs_btnMOR gs_in_ib gs_btn_flat gs_btn_lrge gs_btn_half gs_btn_lsu gs_press gs_md_tb"><span class="gs_wr"><span class="gs_ico"></span><span class="gs_lbl"></span></span></button><div id="gsc_dd_mor-d" class="gs_md_d gs_md_ds gs_md_ulr" role="menu" tabindex="-1"><div class="gsc_dd_sec"><a role="menuitem" href="/citations?view_op=list_trash&amp;hl=en" tabindex="-1" class="gs_md_li">View trash</a></div><div id="gsc_dd_mor-s" class="gs_oph gsc_dd_sec gsc_dd_sep"><a role="menuitem" href="/citations?hl=en&amp;user=VAi0mIQAAAAJ&amp;view_op=list_works" tabindex="-1" class="gs_md_li gsc_dd_mor-sel">Sort by citations</a><a role="menuitem" href="/citations?hl=en&amp;user=VAi0mIQAAAAJ&amp;view_op=list_works&amp;sortby=pubdate" tabindex="-1" class="gs_md_li">Sort by year</a><a role="menuitem" href="/citations?hl=en&amp;user=VAi0mIQAAAAJ&amp;view_op=list_works&amp;sortby=title" tabindex="-1" class="gs_md_li">Sort by title</a></div><div id="gsc_dd_mor-p" class="gsc_dd_sep">Select articles to see merge, delete, and export buttons</div></div></div></th><th class="gsc_a_c" scope="col" dir="rtl"><span id="gsc_a_ca"><div class="gs_nph">Cited by</div><div class="gs_oph">Cited by</div></span></th><th class="gsc_a_y" scope="col"><span class="gsc_a_h" id="gsc_a_ha"><a class="gsc_a_a">Year</a></span></th></tr></thead>
                             <tbody id="gsc_a_b">
                             </tbody>
                         </table>
@@ -113,7 +116,59 @@
             </div>
         </div>
 
+        <!-- INFO PANEL -->
+        <div id="info">
+            <div style="text-align: center;"><button onclick="document.getElementById('info').style.display='none'"><b>Close this panel</b></button></div>
+
+            <br><br>
+
+            Hello! This is <b>Publish or Perish</b>, a game about surviving and thriving in academia. <br>
+            I spend way too long looking at my own Scholar page, so I made a game about it (:
+
+            <br><br>
+
+            This is an incremental game - the whole point is watching numbers go up. In a way, the pleasure of watching numbers go up in an incremental game is similar to 
+            the pleasure of watching the number of citations go up over the years. Incremental games have seen some recent interest in academia, such as in this [1] CHI 2018 paper.
+
+            <br><br>
+
+            <b>How to play:</b>
+            <ul style="margin-left: 20px;">
+                <li>Click "write" next to a paper to write!</li>
+                <li>Completed papers get cited. Different papers have different levels of success, so some papers get cited more often than others. 
+                    Citations give you money. Use money to buy upgrades.</li>
+                <li>Coauthors and PhD students help you write papers. Get coauthors to have papers write themselves.</li>
+                <li>H-index is measured as N papers having at least N citations. To have h-index 5, you need at least 5 papers with at least 5 citations. To get h-index 10, you need at least 
+                    10 papers with at least 10 citations. 
+                </li>
+                <li>Get to h-index 100!</li>
+            </ul>
+
+            <br><br>
+
+            Made by a procrastinating PhD student, <a href="https://picorana.github.io/">picorana</a>.<br>
+            Now that you have seen this, look at <a href="https://scholar.google.com/citations?user=VAi0mIQAAAAJ&hl=en">my actual Scholar page</a>, or <a href="https://twitter.com/sara_picorana">follow me on Twitter</a>,
+            take a look at my <a href="https://picorana.github.io/">personal website</a>, or <a href="https://www.paypal.com/donate/?hosted_button_id=MSNCQV3ZTYSYL">buy me a beer!</a>
+
+            <br><br>
+
+            Shoutout to the subreddit that inspired this, <a href="https://www.reddit.com/r/incremental_games/">r/incremental_games</a>. <br>
+            Icons by <a href="https://freeicons.io/profile/3335">MD Badsha Meah</a> on <a href="https://freeicons.io">freeicons.io</a>  
+
+            <br><br>
+
+            [1] Alharthi, Sultan A.; Alsaedi, Olaa; Toups, Zachary O.; Tanenbaum, Joshua; Hammer, Jessica (April 2018). "Playing to Wait: A Taxonomy of Idle Games". Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems. Montreal, Canada: Association for Computing Machinery. doi:10.1145/3173574.3174195. 
+        
+            <br><br>
+
+            <div style="text-align: center;"><button onclick="document.getElementById('info').style.display='none'"><b>Close this panel</b></button></div>
+        </div>
+
+
         <script src="src/hist.js"></script>
+        <script src="src/coauthor.js"></script>
+        <script src="src/paper.js"></script>
+        <script src="src/upgrade.js"></script>
         <script src="src/main.js"></script>
         
     </body>

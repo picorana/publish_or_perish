@@ -1,100 +1,33 @@
+let testing = false;
+
 let player = {
     total_citations: 0,
     papers: [],
-    tickspeed: 100,
+    tickspeed: 1000,
     citations_by_year: {},
     current_date: new Date(),
     current_year: new Date().getFullYear(),
     start_date: new Date(),
     update_cycles_per_year: 100,
     update_cycles: 0,
+
     money: 0,
+    money_citations_factor: 0.1,
+    
     coauthors: [],
+    write_per_click: 0.05,
 }
 
-let upgrades = [
-    {
-        name: "Drink Coffee",
-        desc: "10% faster writing speed",
-        cost: 10,
-        effect: function(){
-            player.tickspeed *= .9;
-        },
-        unlocked: false,
-    }, {
-        name: "Drink More Coffee",
-        desc: "10% faster writing speed",
-        cost: 100,
-        effect: function(){
-            player.tickspeed *= .9;
-        },
-        unlocked: false,
-    }, {
-        name: "Get coauthor",
-        desc: "Coauthors can help you write papers",
-        cost: 0,
-        effect: function(){
-            add_coauthor();
-        },
-        unlocked: false,
-    }
-]
+// testing currently goes at 10x speed
+if (testing){
+    player.tickspeed = 100;
+    add_coauthor();
+}
 
 let hist = new Hist();
 
-function gen_paper_title(){
-    return "New Paper";
-}
-
 function add_paper(){
-    let new_paper = {
-        title: gen_paper_title(),
-        citations: 0,
-        authors: [],
-        progress: 0,
-        speed: Math.random()*0.5,
-        year: player.current_year,
-    }
-    player.papers.push(new_paper);
-
-    let main_col = document.getElementById("gsc_a_b");
-    new_paper.div = document.createElement("tr");
-    main_col.insertBefore(new_paper.div, main_col.firstChild);
-
-    new_paper.div.className = "gsc_a_tr";
-
-    new_paper.div.td = document.createElement("td");
-    new_paper.div.td.className = "gsc_a_t";
-    new_paper.div.appendChild(new_paper.div.td);
-
-    new_paper.div.ttl = document.createElement("a");
-    new_paper.div.ttl.className = "gsc_a_at";
-    new_paper.div.appendChild(new_paper.div.ttl);
-    new_paper.div.ttl.innerHTML = new_paper.title;
-
-    new_paper.div.cit = document.createElement("td");
-    new_paper.div.cit.className = "gsc_a_c";
-    new_paper.div.appendChild(new_paper.div.cit);
-    new_paper.div.cit.innerHTML = new_paper.citations;
-
-    new_paper.div.yr = document.createElement("td");
-    new_paper.div.yr.className = "gsc_a_y";
-    new_paper.div.appendChild(new_paper.div.yr);
-    new_paper.div.yr.innerHTML = new_paper.year;
-
-    new_paper.div.progress_btn = document.createElement("button");
-    new_paper.div.progress_btn.className = "gsc_a_ac";
-    new_paper.div.progress_btn.innerHTML = "Write";
-    new_paper.div.progress_btn.style.margin = "10px";
-    new_paper.div.progress_btn.onclick = function(){
-        new_paper.progress += 0.1;
-        if (new_paper.progress >= 0.9) {
-            new_paper.div.progress_btn.innerHTML = "Done";
-            new_paper.div.progress_btn.disabled = true;
-        }
-        else new_paper.div.progress_btn.innerHTML = Math.round(new_paper.progress*100) + "%";
-    }
-    new_paper.div.ttl.appendChild(new_paper.div.progress_btn);
+    new Paper();
 }
 
 function update_total_citations(){
@@ -132,42 +65,17 @@ function update_i10_index(){
     document.getElementById("all_i10_index").innerHTML = i10_index;
 }
 
-function check_upgrade_unlock_conditions(upgrade){
-    return true;
+function update_money(){
+    player.money += player.total_citations * player.money_citations_factor;
+    document.getElementById("money_val").innerHTML = "Money: " + Math.round(player.money);
 }
 
-function draw_upgrade(upgrade){
-    let upgraderow = document.getElementById("gsc_prf_nbar_btns");
+function update_money_formula(){
+    document.getElementById("money_formula").innerHTML = "Money = citations * " + player.money_citations_factor;
+}
 
-    upgrade.div = document.createElement("div");
-    upgrade.div.className = "upgrade_card";
-    upgraderow.appendChild(upgrade.div);
-
-    upgrade.div.btn = document.createElement("button");
-    upgrade.div.btn.className = "gsc_prf_pua gsc_prf_pua-upgrade";
-    upgrade.div.btn.innerHTML = upgrade.name;
-    upgrade.div.appendChild(upgrade.div.btn);
-
-    upgrade.div.btn.onclick = function(){
-        if (player.total_citations < upgrade.cost) return;
-        player.total_citations -= upgrade.cost;
-        upgrade.effect();
-        update_total_citations();
-        upgrade.div.style.display = "none";
-    }
-
-    upgrade.div.desc = document.createElement("div");
-    upgrade.div.desc.className = "gsc_prf_pud";
-    upgrade.div.desc.innerHTML = upgrade.desc;
-    upgrade.div.appendChild(upgrade.div.desc);
-
-    upgrade.div.cost = document.createElement("div");
-    upgrade.div.cost.className = "gsc_prf_puc";
-    upgrade.div.cost.innerHTML = "cost: " + upgrade.cost;
-    upgrade.div.appendChild(upgrade.div.cost);
-
-    // upgrade.div.cost_icon = document.createElement("img");
-
+function show_info(){
+    document.getElementById("info").style.display = "block";
 }
 
 function update(){
@@ -193,6 +101,7 @@ function update(){
     update_i10_index();
     update_coauthors();
     hist.update();
+    update_money();
 
     player.update_cycles++;
     if (player.update_cycles % player.update_cycles_per_year == 0) {
@@ -206,59 +115,19 @@ function update(){
 
 function update_coauthors(){
     for (let coauthor of player.coauthors){
-        if (coauthor.assigned_paper == null) {
-            let papers = player.papers.filter(p => p.progress <= 0.9);
-            if (papers.length == 0) coauthor.assigned_paper = null;
-            coauthor.assigned_paper = papers[Math.floor(Math.random()*papers.length)];
-        }
-
-        coauthor.assigned_paper.progress += coauthor.speed;
-        if (coauthor.assigned_paper.progress >= 0.9) {
-            coauthor.assigned_paper.div.progress_btn.innerHTML = "Done";
-            coauthor.assigned_paper.div.progress_btn.disabled = true;
-            coauthor.assigned_paper = null;
-        }
-        else coauthor.assigned_paper.div.progress_btn.innerHTML = Math.round(coauthor.assigned_paper.progress*100) + "%";
+        coauthor.update();
     }
 }
 
 function add_coauthor(){
-    let coauthor = {
-        name: "Coauthor " + player.coauthors.length,
-        speed: 0.01,
-        assigned_paper: null,
-    }
-
-    player.coauthors.push(coauthor);
-
-    let crow = d3.select("#coauthorlist").append("li")
-        .attr("class", "gsc_rsb_aa")
-        .style("display", "flex")
-
-    // image
-    let i = crow.append("span")
-    i.append("img")
-        .attr("src", Math.random() < 0.5? "img/f_reading.svg" : "img/m_reading.svg")
-        .attr("width", "32")
-        .attr("height", "32")
-
-    // name
-    let s = crow.append("span")
-        .attr("class", "gsc_rsb_a_desc")
-        
-    s.append("a")
-        .text(coauthor.name)
-
-    s.append("span")
-        .attr("class", "gsc_rsb_a_ext")
-        .text("Northeastern University")
+    new Coauthor();
 }
 
 function init(){
     player.citations_by_year[player.current_year] = 0;
 
     add_paper();
-    add_coauthor();
+    // add_coauthor();
     
     update();
 }
