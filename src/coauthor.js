@@ -34,11 +34,16 @@ class Coauthor {
     update(){
         if (this.assigned_paper == null) {
             let papers = player.papers.filter(p => p.progress <= 0.9);
-            if (papers.length == 0) this.assigned_paper = null;
-            this.assigned_paper = papers[Math.floor(Math.random()*papers.length)];
+            if (papers.length == 0) {
+                this.assigned_paper = null;
+            } else {
+                this.assigned_paper = papers[Math.floor(Math.random()*papers.length)];
+            }
         }
 
-        this.assigned_paper.write(this.speed);
-        if (this.assigned_paper.complete) this.assigned_paper = null;
+        if (this.assigned_paper) {
+            this.assigned_paper.write(this.speed);
+            if (this.assigned_paper.complete) this.assigned_paper = null;
+        }
     }
 }
